@@ -1,0 +1,159 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% comment %} <script src="validation.js"></script> {% endcomment %}
+  </head>
+  <body>
+    <form class="box" action="#" method="POST" id="formSubmit">
+      <div class="header">
+        <h1>Create Account</h1>
+        <h4>It's free and hardly takes more than 30 seconds</h4>
+      
+      <div class="form">
+        <div class="form-control">
+          <i class="fa fa-user icon"></i>
+          <label for="username" name="username"></label>
+          <input type="text" placeholder="Username" id="txtUserName" />
+          <small></small>
+        </div>
+        <div class="form-control">
+          <i class="fa fa-paper-plane icon"></i>
+          <label for="email" name="email"></label>
+          <input type="email" placeholder="Email Address " id="txtEmail" />
+          <small></small>
+        </div>
+        
+        <div class="form-control">
+          <i class="fa fa-lock icon"></i>
+          
+          <label for="password" name="password"></label>
+          <input type="password" 
+          placeholder="Password" 
+          name="password" 
+          id="txtPassword" 
+          value=""
+          onkeyup='check();'/>
+          <small>
+          <span id = "message1" style="color:red"> </span>
+          </small>
+        </div>
+
+        <div class="form-control">
+          <i class="fa fa-check-square icon"></i>
+          <label for="confirmpwd" placeholder="Confirm Password" ></label>
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            id="confirm_password"
+            value = ""
+            onkeyup='check();'
+          />
+          <span id='message'></span>
+          <small></small>
+        </div>
+
+        <div class="form-control">
+          <input type="submit" value="submit" onclick="matchPassword(); onSubmit();" />
+        </div>
+        <div class="Terms">
+          By clicking the sign Up button, you agree to our
+          <a href="T&C">Terms and Conditions</a> , and
+          <a href="T&C">Policy</a>
+        </div>
+      </div>
+    </form>
+  </body>
+
+  
+<script>
+
+
+//------- Validation- 1-------------------------
+function matchPassword() {  
+  var pw1 = document.getElementById("txtPassword");  
+  var pw2 = document.getElementById("confirm_password");  
+  if(pw1 != pw2)  
+  {   
+    alert("Passwords did not match");  
+  } else {  
+    alert("Passwords match");  
+  }  
+}  
+function verifyPassword() {  
+  var pw = document.getElementById("txtPassword").value;  
+  //check empty password field  
+  if(txtPassword == "") {  
+     document.getElementById("message1").innerHTML = "**Fill the password please!";  
+     return false;  
+  }  
+   
+ //minimum password length validation  
+  if(txtPassword.length < 8) {  
+     document.getElementById("message1").innerHTML = "**Password length must be atleast 8 characters";  
+     return false;  
+  }  
+  
+//maximum length of password validation  
+  if(txtPassword.length > 15) {  
+     document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";  
+     return false;  
+  } else {  
+     alert("Password is correct");  
+  }  
+}
+// -------------submit form---------------------
+    function onSubmit(){
+      document.getElementById("formSubmit").submit();
+      alert("login successful");
+    }
+//-------------reload page -----------------------
+    function reload(){
+      location.reload();
+    }
+
+//---- Validation 2 -------------------------------
+
+
+
+
+//--------------------jquery validate----------------
+{% comment %} $('#password, #confirm_password').on('keyup', function () {
+  if ($('#password').val() == $('#confirm_password').val()) {
+    $('#message').html('Matching').css('color', 'green');
+  } else 
+    $('#message').html('Not Matching').css('color', 'red');
+}); {% endcomment %}
+//------------field validation------------------------
+  {% comment %} function validate()
+    {
+      var Username = document.getElementById("txtUserName");
+      var Password = document.getElementById("txtPassword");
+      
+      if(Username.value=="" ||Password.value=="")
+        {
+          alert("login sucessful");
+          window.location.reload;
+          return false;
+          
+        }
+        else
+        {
+          alert("login failed");
+        }
+    } {% endcomment %}
+
+
+<script>
+  
+</html>
