@@ -1,30 +1,44 @@
 
   
-  //------- Validation--------------------------
-  var passwordcheck = function() {
-    if (document.getElementById('txtPassword').value ==
-      document.getElementById('confirm_password').value) {
-      document.getElementById('message').style.color = 'green';
-      document.getElementById('message').innerHTML = 'Passwords match';
-    } else {
-      document.getElementById('message').style.color = 'red';
-      document.getElementById('message').innerHTML = 'Passwords do not match';
-    }
-  }
-  // -------------submit form---------------------
-      function onSubmit(){
-        document.getElementById("formSubmit").submit();
-        alert("login successful");
-      }
-  //-------------reload page -----------------------
-      function reload(){
-        location.reload();
-      }
+  //----------Password validation---------------------------
+function validatePassword() {  
+  var passw = document.getElementById("txtPassword").value;  
+  //Empty password field validation/check 
+  if(passw == "") {  
+     document.getElementById("msgPasswordval").innerHTML = "**Password field cannot be empty!";  
+     return false;  
+  }  
+   
+ //minimum password length validation/check
+  if(passw.length < 8) {  
+     document.getElementById("msgPasswordval").innerHTML = "**Password length must be at least 8 characters";  
+     return false;  
+  }  
+  
+//maximum length of password validation/check
+  if(passw.length > 15) {  
+     document.getElementById("msgPasswordval").innerHTML = "**Password length must not exceed 15 characters";  
+     return false;  
+  } else {  
+     alert("Validations passed");  
+  }  
+} 
+  
+//------- Password match/confirmation check-------------------------
+function matchPassword() {  
+  var pass = document.getElementById("txtPassword");  
+  var confPass = document.getElementById("confirmPassword");  
+  if(pass != confPass)  
+  {   
+    alert("Passwords did not match");  
+  } else {  
+    alert("Passwords match");  
+  }  
+} 
 
 
-
-      //-------------------------Excess code------------------
-      //-------------------------Excess code------------------
+//-------------------------Excess code------------------
+//-------------------------Excess code------------------
       
 //--------------------jquery validate----------------
 // $('#password, #confirm_password').on('keyup', function () {
@@ -33,30 +47,3 @@
 //     } else 
 //       $('#message').html('Not Matching').css('color', 'red');
 //   });
-
-//-----------------------old function -----------------------------
-// function validate()
-//     {
-//       var Username = document.getElementById("txtUserName");
-//       var Password = document.getElementById("txtPassword");
-      
-//       if(Username.value=="" ||Password.value=="")
-//         {
-//           alert("login sucessful");
-//           window.location.reload;
-//           return false;
-          
-//         }
-//         else
-//         {
-//           alert("login failed");
-//         }
-//     }
-// //------------------------on form submit function-----------------
-//     function onSubmit(){
-//       document.getElementById("formSub").submit();
-//     }
-// //----------------------reload page ------------------------------
-//     function reload(){
-//       location.reload();
-//     }
