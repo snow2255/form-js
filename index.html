@@ -108,11 +108,12 @@ function validatePassword() {
 function matchPassword() {  
   var pass = document.getElementById("txtPassword");  
   var confPass = document.getElementById("confirmPassword");  
-  if(pass !?= confPass)  
+  if(pass == confPass)  
   {   
-    alert("Passwords did not match");  
+    alert("Passwords match, congratulations the form will be submitted on reload");
+    localStorage.setItem('formItem')
   } else {  
-    alert("Passwords match");  
+    alert("Passwords did not match. Please try again.");  
   }  
 } 
  
